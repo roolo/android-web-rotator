@@ -3,6 +3,10 @@ class MainActivity < Android::App::Activity
 
   def onCreate(savedInstanceState)
     super
+
+    layoutId = resources.getIdentifier('main', 'layout', packageName)
+    self.contentView = layoutId
+
     @handler = Android::Os::Handler.new
 
     webview_setup
@@ -21,7 +25,9 @@ class MainActivity < Android::App::Activity
   end
 
   def webview_setup
-    @webview = Android::Webkit::WebView.new(self)
+    viewId = resources.getIdentifier('mainWebView', 'id', packageName)
+    @webview = findViewById(viewId)
+
     settings = @webview.settings
     settings.savePassword = true
     settings.saveFormData = false
@@ -31,7 +37,5 @@ class MainActivity < Android::App::Activity
     @webview.webChromeClient = Android::Webkit::WebChromeClient.new
 
     @webview.loadUrl("http://www.rooland.cz")
-
-    self.contentView = @webview
   end
 end
