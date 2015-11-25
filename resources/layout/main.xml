@@ -5,13 +5,21 @@
                 tools:context=".WebViewActivity"
 >
 
+  <ProgressBar
+    android:id="@+id/timerProgress"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    style="@android:style/Widget.ProgressBar.Horizontal"
+  />
+
   <WebView
     android:id="@+id/mainWebView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
     android:layout_gravity="center"
-    android:layout_below="@+id/progressBar"
+    android:layout_below="@+id/timerProgress"
   />
 
 </RelativeLayout>

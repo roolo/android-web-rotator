@@ -8,4 +8,5 @@ Motion::Project::App.setup do |app|
 
   app.files_dependencies 'app/main_activity.rb' => 'app/planned_web_load.rb'
   app.files_dependencies 'app/main_activity.rb' => 'app/rotator_chrome_client.rb'
+  app.files_dependencies 'app/main_activity.rb' => 'app/timer_progress_updater.rb'
 end
