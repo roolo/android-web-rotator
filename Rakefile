@@ -8,4 +8,8 @@ Motion::Project::App.setup do |app|
 
   app.files_dependencies 'app/main_activity.rb' => 'app/planned_web_load.rb'
   app.files_dependencies 'app/main_activity.rb' => 'app/rotator_chrome_client.rb'
+
+  app.manifest.child('application') do |application|
+    application['android:theme'] = '@android:style/Theme.Black.NoTitleBar.Fullscreen'
+  end
 end
