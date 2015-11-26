@@ -11,8 +11,8 @@ class MainActivity < Android::App::Activity
 
     webview_setup
 
-    # 10 seconds
-    web_load_interval = 10000
+    # 60 seconds * 5 minutes
+    web_load_interval = 60_000 * 5
 
     # @todo Try to find way to get progress from timer
     timer_progress_bar = timer_progress_setup web_load_interval
@@ -35,7 +35,7 @@ class MainActivity < Android::App::Activity
   # @param [ProgressBar] timer_progress_bar
   def timer_setup interval, timer_progress_bar
     @timer = Java::Util::Timer.new
-    time_one_percent = interval/100
+    time_one_percent = interval/1000
 
     task = PlannedWebLoad.new
     task.activity = self
