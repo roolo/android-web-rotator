@@ -16,9 +16,8 @@
     android:layout_gravity="fill"
   />
 
-
   <Button
-    android:id="@+id/buttonPauseTimer"
+    android:id="@+id/buttonToggleTimer"
     style="?android:attr/buttonStyleSmall"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

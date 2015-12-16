@@ -1,18 +1,12 @@
 class PlannedWebLoad < Java::Util::TimerTask
   attr_accessor :activity
 
-  attr_accessor :pages_position, :timer_progress_bar, :fraction
+  attr_accessor :timer_progress_bar, :fraction
   PAGES = [
     'http://www.rooland.cz/tag/dev.html',
     'http://www.rooland.cz/tag/komunikace.html',
     'http://www.rooland.cz/tag/zacatecnik.html'
   ]
-
-  def initialize
-    super
-
-    @pages_position = 0
-  end
 
   def run
     # This method will be called from another thread, and UI work must
@@ -30,12 +24,12 @@ class PlannedWebLoad < Java::Util::TimerTask
   private
 
   def next_page
-    next_page_address = PAGES[@pages_position]
+    next_page_address = PAGES[@activity.pages_position]
 
-    if PAGES[@pages_position+1]
-      @pages_position += 1
+    if PAGES[@activity.pages_position+1]
+      @activity.pages_position += 1
     else
-      @pages_position = 0
+      @activity.pages_position = 0
     end
 
     next_page_address
