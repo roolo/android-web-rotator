@@ -21,6 +21,11 @@ class MainActivity < Android::App::Activity
     # @todo Try to find way to get progress from timer
     @timer_progress_bar = timer_progress_setup @web_load_interval
     timer_setup @web_load_interval, @timer_progress_bar
+
+    browser_button = findViewById(
+      resources.getIdentifier('buttonOpenInBrowser', 'id', packageName)
+    )
+    browser_button.onClickListener = BrowserButtonListener.new self
   end
 
   # @param [Android::view::View] view
@@ -78,5 +83,14 @@ class MainActivity < Android::App::Activity
     @webview.webChromeClient = Android::Webkit::WebChromeClient.new
 
     @webview.loadUrl("http://www.rooland.cz")
+  end
+
+  # @param [Android::view::View] view
+  #
+  # @return [Nil]
+  def current_page_in_browser view
+    browserIntent = Android::Content::Intent.new Android::Content::Intent::ACTION_VIEW,
+                                                 Android::Net::Uri.parse('http://www.google.com')
+    view.getContext.startActivity browserIntent
   end
 end
